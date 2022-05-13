@@ -1,6 +1,6 @@
-package models;
+package com.example.day4.models;
 
-import dto.EmployeePayrollDTO;
+import com.example.day4.dto.EmployeePayrollDTO;
 
 public class EmployeePayrollData {
     private int employeeId;

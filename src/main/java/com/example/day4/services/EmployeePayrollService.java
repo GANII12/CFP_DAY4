@@ -1,7 +1,8 @@
-package services;
+package com.example.day4.services;
 
-import dto.EmployeePayrollDTO;
-import models.EmployeePayrollData;
+import com.example.day4.dto.EmployeePayrollDTO;
+import com.example.day4.exceptions.EmployeePayrollException;
+import com.example.day4.models.EmployeePayrollData;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,16 +13,15 @@ public class EmployeePayrollService implements IEmployeePayrollService{
     private List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
     @Override
     public List<EmployeePayrollData> getEmployeePayrollData() {
-//        List<EmployeePayrollData> employeePayrollList = new ArrayList<>() ;
-//        employeePayrollList.add(new EmployeePayrollData(1,new EmployeePayrollDTO("Ganesh",10000)));
         return employeePayrollList;
     }
 
     @Override
     public EmployeePayrollData getEmployeePayrollDataById(int empId) {
-//        EmployeePayrollData employeePayrollData = null;
-//        employeePayrollData = new EmployeePayrollData(empId , new EmployeePayrollDTO("Ganesh", 10000));
-        return employeePayrollList.get(empId-1);
+        return employeePayrollList.stream()
+                .filter(empData -> empData.getEmployeeId() == empId)
+                .findFirst()
+                .orElseThrow(() -> new EmployeePayrollException("Employee Not Foud"));
     }
 
     @Override
