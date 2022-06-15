@@ -15,17 +15,21 @@ public @Data class EmployeePayrollData {
     @Column(name = "employee_id")
     private int employeeId;
 
-    @Column(name = "name")
-    private String name;
-    private long salary;
+    @Column(name = "First_name")
+    private String firstName;
+    @Column(name = "Last_name")
+    private String lastName;
     private String gender;
-    private LocalDate startDate;
-    private String note;
-    private String profilePic;
-    @ElementCollection
-    @CollectionTable(name = "employee_department",joinColumns = @JoinColumn(name = "id"))
+//    @ElementCollection
+//    @CollectionTable(name = "employee_department",joinColumns = @JoinColumn(name = "id"))
     @Column(name = "department")
-    private List<String> department;
+    private String department;
+    private long salary;
+
+    private LocalDate startdate;
+    private String notes;
+    private String profilePic;
+
 
     public EmployeePayrollData() {
     }
@@ -34,12 +38,13 @@ public @Data class EmployeePayrollData {
         this.updateEmployeePayrollData(empPayrollDTO);
     }
     public void updateEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
-        this.name = empPayrollDTO.name;
-        this.salary = empPayrollDTO.salary;
+        this.firstName = empPayrollDTO.firstName;
+        this.lastName = empPayrollDTO.lastName;
         this.gender = empPayrollDTO.gender;
-        this.note = empPayrollDTO.note;
-        this.startDate = empPayrollDTO.startDate;
-        this.profilePic = empPayrollDTO.profilePic;
+        this.startdate = empPayrollDTO.startdate;
         this.department = empPayrollDTO.department;
+        this.salary = empPayrollDTO.salary;
+        this.notes = empPayrollDTO.notes;
+        this.profilePic = empPayrollDTO.profilePic;
     }
 }

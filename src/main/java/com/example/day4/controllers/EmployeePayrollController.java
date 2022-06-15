@@ -13,7 +13,7 @@ import com.example.day4.services.IEmployeePayrollService;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("empPayroll")
 @Slf4j
